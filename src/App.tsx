@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import * as Icons from 'lucide-react';
 import { CASE_STUDIES, CaseStudy } from './types';
@@ -16,16 +16,49 @@ export default function App() {
 
   const currentCaseStudy = CASE_STUDIES[currentCaseStudyIndex];
   const activeSection = currentCaseStudy.sections[activeIndex];
+  const totalSections = currentCaseStudy.sections.length;
 
   const rotateY = useMemo(() => {
-    return -activeIndex * (360 / currentCaseStudy.sections.length);
-  }, [activeIndex, currentCaseStudy.sections.length]);
+    return -activeIndex * (360 / totalSections);
+  }, [activeIndex, totalSections]);
+
+  const navigateCarousel = (direction: 'next' | 'prev') => {
+    setActiveIndex((current) => {
+      if (direction === 'next') {
+        return (current + 1) % totalSections;
+      }
+
+      return (current - 1 + totalSections) % totalSections;
+    });
+  };
 
   const handleCaseStudyChange = (index: number) => {
     setCurrentCaseStudyIndex(index);
     setActiveIndex(0);
     setIsDropdownOpen(false);
   };
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (previewImage || isDropdownOpen) {
+        return;
+      }
+
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        navigateCarousel('next');
+      }
+
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        navigateCarousel('prev');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isDropdownOpen, previewImage, totalSections]);
 
   return (
     <div className="flex h-screen w-full bg-[#fcfcfc] text-[#1a1a1a] overflow-hidden font-sans antialiased">
@@ -140,26 +173,25 @@ export default function App() {
         <div className="absolute inset-0 pointer-events-none opacity-[0.03]" 
              style={{ backgroundImage: 'radial-gradient(#000 0.5px, transparent 0.5px)', backgroundSize: '24px 24px' }} />
 
-        {/* 3D Carousel Container */}
-        <div className="relative w-full h-full flex items-center justify-center perspective-[2500px]">
+        {/* Carousel Container */}
+        <div className="relative flex h-full w-full items-center justify-center overflow-hidden px-8 perspective-[2000px]">
           <motion.div
-            key={currentCaseStudy.id} // Reset animation on case study change
+            key={currentCaseStudy.id}
             animate={{ rotateY }}
-            transition={{ type: 'spring', damping: 25, stiffness: 60 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             style={{ transformStyle: 'preserve-3d' }}
-            className="relative w-[640px] h-[360px]"
+            className="relative h-[360px] w-[640px]"
           >
             {currentCaseStudy.sections.map((section, index) => {
-              const angle = index * (360 / currentCaseStudy.sections.length);
+              const angle = index * (360 / totalSections);
               const isActive = activeIndex === index;
-              
+
               return (
                 <div
                   key={section.id}
                   style={{
                     position: 'absolute',
-                    width: '100%',
-                    height: '100%',
+                    inset: 0,
                     transform: `rotateY(${angle}deg) translateZ(800px)`,
                     transformStyle: 'preserve-3d',
                   }}
@@ -172,47 +204,38 @@ export default function App() {
                     }
                   }}
                 >
-                  {/* Front Face */}
                   <motion.div
                     animate={{
                       scale: isActive ? 1 : 0.9,
-                      filter: isActive ? 'brightness(1)' : 'brightness(0.8) grayscale(0.2)',
+                      opacity: isActive ? 1 : 0.8,
                       y: isActive ? 0 : 20,
                     }}
-                    transition={{ duration: 0.4 }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                     style={{ backfaceVisibility: 'hidden' }}
-                    className="absolute inset-0 rounded-2xl overflow-hidden border border-black/5 bg-white shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] z-10 will-change-transform"
+                    className="absolute inset-0 overflow-hidden rounded-2xl border border-black/5 bg-white shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)]"
                   >
-                    <img
-                      src={section.image}
-                      alt={section.title}
-                      className="w-full h-full object-cover"
-                      referrerPolicy="no-referrer"
-                    />
-                    
-                    {/* Minimal Content Overlay */}
-                    <div className="absolute inset-x-0 bottom-0 p-10 bg-gradient-to-t from-black/60 to-transparent">
-                      <motion.div
-                        initial={false}
-                        animate={{ y: isActive ? 0 : 10, opacity: isActive ? 1 : 0 }}
-                      >
-                        <h2 className="text-2xl font-bold text-white tracking-tight drop-shadow-sm">{section.title}</h2>
-                      </motion.div>
+                    <div className={`relative h-full w-full ${section.imageBackgroundClassName ?? ''}`}>
+                      <img
+                        src={section.image}
+                        alt={section.title}
+                        className={`${section.imageClassName ?? 'h-full w-full'} ${section.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`}
+                        style={section.isLogo ? { imageRendering: 'auto' } : undefined}
+                        referrerPolicy="no-referrer"
+                      />
                     </div>
-                  </motion.div>
 
-                  {/* Back Face (Light Background) */}
-                  <div 
-                    style={{ 
-                      backfaceVisibility: 'hidden',
-                      transform: 'rotateY(180deg)',
-                    }}
-                    className="absolute inset-0 rounded-2xl bg-white border border-black/5 shadow-sm flex items-center justify-center"
-                  >
-                    <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-[10px] font-mono text-gray-300">
-                      {(index + 1).toString().padStart(2, '0')}
-                    </div>
-                  </div>
+                    {section.showTitle !== false && (
+                      <div className="absolute inset-x-0 bottom-0 p-10 bg-gradient-to-t from-black/60 to-transparent">
+                        <motion.div
+                          initial={false}
+                          animate={{ y: isActive ? 0 : 10, opacity: isActive ? 1 : 0.72 }}
+                          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                        >
+                          <h2 className="text-2xl font-bold tracking-tight text-white drop-shadow-sm">{section.title}</h2>
+                        </motion.div>
+                      </div>
+                    )}
+                  </motion.div>
                 </div>
               );
             })}
@@ -266,25 +289,35 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-white/90 backdrop-blur-md p-10"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-white/90 p-6 md:p-10"
             onClick={() => setPreviewImage(null)}
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="relative max-w-7xl w-full aspect-video rounded-3xl overflow-hidden shadow-2xl border border-black/5"
+              className="relative aspect-video w-full max-w-7xl overflow-hidden rounded-3xl border border-black/5 bg-white shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <img
                 src={previewImage}
-                alt="Preview"
-                className="w-full h-full object-cover"
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 h-full w-full scale-110 object-cover opacity-25 blur-3xl"
                 referrerPolicy="no-referrer"
               />
+              <div className="absolute inset-0 bg-white/35" />
+              <div className="relative z-10 flex h-full w-full items-center justify-center p-6 md:p-10">
+                <img
+                  src={previewImage}
+                  alt="Preview"
+                  className="block max-h-full max-w-full object-contain"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
               <button
                 onClick={() => setPreviewImage(null)}
-                className="absolute top-6 right-6 p-3 rounded-full bg-black/10 hover:bg-black/20 transition-colors text-black"
+                className="absolute right-4 top-4 z-20 rounded-full bg-black/10 p-3 text-black transition-colors hover:bg-black/20 md:right-6 md:top-6"
               >
                 <Icons.X size={24} />
               </button>

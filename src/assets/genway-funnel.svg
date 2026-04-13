@@ -1,0 +1,45 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="28" fill="#202124"/>
+  <text x="36" y="54" fill="#B8BABF" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="1.5">FUNNEL • LAST 7 DAYS</text>
+  <text x="36" y="104" fill="#F4F5F7" font-family="Arial, sans-serif" font-size="34" font-style="italic" font-weight="700">new_tenant_onboarded → new_project_created → Publish project (any) → [...]</text>
+  <line x1="48" y1="146" x2="1152" y2="146" stroke="#34363B" stroke-width="2"/>
+
+  <line x1="66" y1="190" x2="66" y2="760" stroke="#34363B" stroke-width="4"/>
+
+  <circle cx="66" cy="218" r="22" fill="#202124" stroke="#34363B" stroke-width="4"/>
+  <text x="58" y="228" fill="#F4F5F7" font-family="Arial, sans-serif" font-size="22" font-weight="700">1</text>
+  <text x="110" y="228" fill="#F4F5F7" font-family="Arial, sans-serif" font-size="28" font-weight="700">new_tenant_onboarded</text>
+  <rect x="110" y="260" width="1010" height="42" rx="14" fill="#2F48F4"/>
+  <text x="1010" y="289" fill="#F4F5F7" font-family="Arial, sans-serif" font-size="28" font-weight="700">100.0%</text>
+  <text x="116" y="350" fill="#4BA50F" font-family="Arial, sans-serif" font-size="24" font-weight="700">→</text>
+  <text x="150" y="350" fill="#F4F5F7" font-family="Arial, sans-serif" font-size="26" font-weight="700">95 persons</text>
+  <text x="310" y="350" fill="#A6A9AE" font-family="Arial, sans-serif" font-size="24">(100.00%) completed step</text>
+
+  <circle cx="66" cy="430" r="22" fill="#202124" stroke="#34363B" stroke-width="4"/>
+  <text x="58" y="440" fill="#F4F5F7" font-family="Arial, sans-serif" font-size="22" font-weight="700">2</text>
+  <text x="110" y="440" fill="#F4F5F7" font-family="Arial, sans-serif" font-size="28" font-weight="700">new_project_created</text>
+  <text x="720" y="440" fill="#A6A9AE" font-family="Arial, sans-serif" font-size="24">Average time to convert: 7m 2s</text>
+  <rect x="110" y="472" width="1010" height="42" rx="14" fill="#31343A"/>
+  <rect x="110" y="472" width="766" height="42" rx="14" fill="#2F48F4"/>
+  <text x="780" y="501" fill="#F4F5F7" font-family="Arial, sans-serif" font-size="28" font-weight="700">75.8%</text>
+  <text x="116" y="560" fill="#4BA50F" font-family="Arial, sans-serif" font-size="24" font-weight="700">→</text>
+  <text x="150" y="560" fill="#F4F5F7" font-family="Arial, sans-serif" font-size="26" font-weight="700">72 persons</text>
+  <text x="310" y="560" fill="#A6A9AE" font-family="Arial, sans-serif" font-size="24">(75.79%) completed step</text>
+  <text x="116" y="600" fill="#E2571F" font-family="Arial, sans-serif" font-size="24" font-weight="700">↘</text>
+  <text x="150" y="600" fill="#F4F5F7" font-family="Arial, sans-serif" font-size="26" font-weight="700">23 persons</text>
+  <text x="310" y="600" fill="#A6A9AE" font-family="Arial, sans-serif" font-size="24">(24.21%) dropped off</text>
+
+  <circle cx="66" cy="680" r="22" fill="#202124" stroke="#34363B" stroke-width="4"/>
+  <text x="58" y="690" fill="#F4F5F7" font-family="Arial, sans-serif" font-size="22" font-weight="700">3</text>
+  <text x="110" y="690" fill="#F4F5F7" font-family="Arial, sans-serif" font-size="28" font-weight="700">Publish project</text>
+  <text x="720" y="690" fill="#A6A9AE" font-family="Arial, sans-serif" font-size="24">Average time to convert: 43m 1s</text>
+  <rect x="110" y="722" width="1010" height="42" rx="14" fill="#31343A"/>
+  <rect x="110" y="722" width="188" height="42" rx="14" fill="#2F48F4"/>
+  <text x="204" y="751" text-anchor="middle" fill="#F4F5F7" font-family="Arial, sans-serif" font-size="28" font-weight="700">16.8%</text>
+  <text x="116" y="810" fill="#4BA50F" font-family="Arial, sans-serif" font-size="24" font-weight="700">→</text>
+  <text x="150" y="810" fill="#F4F5F7" font-family="Arial, sans-serif" font-size="26" font-weight="700">16 persons</text>
+  <text x="310" y="810" fill="#A6A9AE" font-family="Arial, sans-serif" font-size="24">(22.22%) completed step</text>
+  <text x="116" y="850" fill="#E2571F" font-family="Arial, sans-serif" font-size="24" font-weight="700">↘</text>
+  <text x="150" y="850" fill="#F4F5F7" font-family="Arial, sans-serif" font-size="26" font-weight="700">56 persons</text>
+  <text x="310" y="850" fill="#A6A9AE" font-family="Arial, sans-serif" font-size="24">(77.78%) dropped off</text>
+</svg>

@@ -1,3 +1,12 @@
+import coverIntelliframeGif from './assets/cover-intelliframe.gif';
+import coverThumbnailIntelliframe from './assets/cover-thumbnail-intelliframe.png';
+import coverTranscriptProject from './assets/cover-transcriptProject.png';
+import coverVideoGenwayGif from './assets/cover-video-genway.gif';
+import genwayConference from './assets/genway-conference.jpg';
+import genwayFunnel from './assets/genway-funnel.svg';
+import logoGenway from './assets/logo-genway.svg';
+import logoMicrosoft from './assets/logo-microsoft.png';
+
 export interface CaseStudySection {
   id: string;
   title: string;
@@ -5,6 +14,11 @@ export interface CaseStudySection {
   description: string;
   image: string;
   icon: string;
+  imageFit?: 'cover' | 'contain';
+  imageBackgroundClassName?: string;
+  imageClassName?: string;
+  isLogo?: boolean;
+  showTitle?: boolean;
 }
 
 export interface CaseStudy {
@@ -25,15 +39,20 @@ export const CASE_STUDIES: CaseStudy[] = [
         title: 'Context',
         subtitle: 'The Mission',
         description: 'Working on an AI platform that conducts user interviews and generates insights automatically. The goal: replace weeks of manual research with hours.',
-        image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=1600&h=900',
+        image: logoGenway,
         icon: 'Layout',
+        imageFit: 'contain',
+        imageBackgroundClassName: 'flex items-center justify-center bg-white',
+        imageClassName: 'h-auto w-auto max-h-[68px] max-w-[240px]',
+        isLogo: true,
+        showTitle: false,
       },
       {
         id: 'problem',
         title: 'The Problem',
         subtitle: 'Comprehension Gap',
         description: 'The challenge wasn’t usability — it was understanding. Users didn’t know what ‘AI-moderated research’ meant, leading to high drop-off before experiencing value.',
-        image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1600&h=900',
+        image: coverVideoGenwayGif,
         icon: 'Zap',
       },
       {
@@ -41,7 +60,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         title: 'Key Insight',
         subtitle: 'Network of Encounters',
         description: 'Onboarding wasn’t a single flow; it was a network of first encounters. We needed to design multiple entry points — each explaining the product and building trust.',
-        image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1600&h=900',
+        image: genwayFunnel,
         icon: 'Lightbulb',
       },
       {
@@ -49,7 +68,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         title: 'Onboarding System',
         subtitle: 'Four Stages',
         description: 'Mapped the experience into four stages: discovering, creating, participating, and receiving. Each became a distinct design problem.',
-        image: 'https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=1600&h=900',
+        image: genwayConference,
         icon: 'Workflow',
       },
       {
@@ -65,7 +84,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         title: 'Designing Trust',
         subtitle: 'Transparency',
         description: 'Redesigned the interview ‘lobby’ to explain the AI process and data usage. Improved stakeholder reports to build trust in AI-generated insights.',
-        image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1600&h=900',
+        image: coverTranscriptProject,
         icon: 'ShieldCheck',
       },
       {
@@ -96,15 +115,20 @@ export const CASE_STUDIES: CaseStudy[] = [
         title: 'Context',
         subtitle: 'Hybrid Meetings',
         description: 'Working on IntelliFrame — an AI feature for hybrid meetings that automatically detects and frames people in a physical meeting room.',
-        image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1600&h=900',
+        image: logoMicrosoft,
         icon: 'Layout',
+        imageFit: 'contain',
+        imageBackgroundClassName: 'flex items-center justify-center bg-white',
+        imageClassName: 'h-auto w-auto max-h-[58px] max-w-[272px]',
+        isLogo: true,
+        showTitle: false,
       },
       {
         id: 'problem',
         title: 'The Problem',
         subtitle: 'Non-Deterministic AI',
         description: 'The system wasn’t deterministic. AI would sometimes miss people or frame them inconsistently, creating a variable experience across meetings.',
-        image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1600&h=900',
+        image: coverIntelliframeGif,
         icon: 'Zap',
       },
       {
@@ -112,7 +136,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         title: 'Key Insight',
         subtitle: 'Designing for Variability',
         description: 'We couldn’t design this like a traditional UI problem. We had to ask: how does this behave across a range of imperfect states?',
-        image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1600&h=900',
+        image: coverThumbnailIntelliframe,
         icon: 'Lightbulb',
       },
       {
