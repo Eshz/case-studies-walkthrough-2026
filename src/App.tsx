@@ -131,7 +131,7 @@ export default function App() {
                   {number}
                 </span>
                 <div className="text-left">
-                  <h3 className="text-sm leading-none">{section.title}</h3>
+                  <h3 className="text-sm leading-none">{section.navTitle ?? section.title}</h3>
                 </div>
                 {isActive && (
                   <motion.div 
@@ -225,13 +225,13 @@ export default function App() {
                     </div>
 
                     {section.showTitle !== false && (
-                      <div className="absolute inset-x-0 bottom-0 p-10 bg-gradient-to-t from-black/60 to-transparent">
+                      <div className="absolute inset-x-0 bottom-0 p-10 bg-gradient-to-t from-black via-black/80 via-35% to-transparent">
                         <motion.div
                           initial={false}
                           animate={{ y: isActive ? 0 : 10, opacity: isActive ? 1 : 0.72 }}
                           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                         >
-                          <h2 className="text-2xl font-bold tracking-tight text-white drop-shadow-sm">{section.title}</h2>
+                          <h2 className="text-2xl font-bold tracking-tight text-white [text-shadow:0_2px_10px_rgba(0,0,0,0.75)]">{section.title}</h2>
                         </motion.div>
                       </div>
                     )}
