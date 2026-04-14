@@ -40,6 +40,12 @@ export default function App() {
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && previewImage) {
+        event.preventDefault();
+        setPreviewImage(null);
+        return;
+      }
+
       if (previewImage || isDropdownOpen) {
         return;
       }
@@ -223,18 +229,6 @@ export default function App() {
                         referrerPolicy="no-referrer"
                       />
                     </div>
-
-                    {section.showTitle !== false && (
-                      <div className="absolute inset-x-0 bottom-0 p-10 bg-gradient-to-t from-black via-black/80 via-35% to-transparent">
-                        <motion.div
-                          initial={false}
-                          animate={{ y: isActive ? 0 : 10, opacity: isActive ? 1 : 0.72 }}
-                          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                        >
-                          <h2 className="text-2xl font-bold tracking-tight text-white [text-shadow:0_2px_10px_rgba(0,0,0,0.75)]">{section.title}</h2>
-                        </motion.div>
-                      </div>
-                    )}
                   </motion.div>
                 </div>
               );
@@ -242,27 +236,25 @@ export default function App() {
           </motion.div>
         </div>
 
-        {/* Floating Info Card (Bottom Right) */}
+        {/* Minimal Caption */}
         <AnimatePresence mode="wait">
           <motion.div
             key={`${currentCaseStudy.id}-${activeSection.id}`}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            className="absolute bottom-16 right-16 w-80 p-8 rounded-2xl bg-white shadow-[0_20px_40px_rgba(0,0,0,0.04)] border border-black/5 z-30"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            className="absolute bottom-24 left-1/2 z-30 flex -translate-x-1/2 items-center gap-5 rounded-full border border-black/5 bg-white/92 px-6 py-3 shadow-[0_20px_40px_rgba(0,0,0,0.05)] backdrop-blur-sm"
           >
-            <div className="flex items-center gap-2 mb-6">
-              <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-gray-400">Section {activeIndex + 1}</span>
+            <div className="flex items-center gap-3">
+              <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-gray-400">Section {activeIndex + 1}</span>
+              <div className="h-4 w-px bg-black/8" />
+              <h4 className="text-sm font-semibold tracking-tight text-black">{activeSection.navTitle ?? activeSection.title}</h4>
             </div>
-            <h4 className="text-base font-semibold mb-3">{activeSection.subtitle}</h4>
-            <p className="text-sm text-gray-500 leading-relaxed font-light">
-              {activeSection.description}
-            </p>
-            <button 
+            <button
               onClick={() => setPreviewImage(activeSection.image)}
-              className="mt-8 flex items-center gap-2 text-xs font-semibold group"
+              className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-gray-500 transition-colors hover:text-black group"
             >
-              View Full Image 
+              View Image
               <Icons.Maximize2 size={14} className="transition-transform group-hover:scale-110" />
             </button>
           </motion.div>
@@ -289,14 +281,14 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-white/90 p-6 md:p-10"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-white/90 p-4 md:p-8"
             onClick={() => setPreviewImage(null)}
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="relative aspect-video w-full max-w-7xl overflow-hidden rounded-3xl border border-black/5 bg-white shadow-2xl"
+              className="relative aspect-video w-[min(90vw,1560px)] overflow-hidden rounded-3xl border border-black/5 bg-white shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <img
@@ -307,7 +299,7 @@ export default function App() {
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-white/35" />
-              <div className="relative z-10 flex h-full w-full items-center justify-center p-6 md:p-10">
+              <div className="relative z-10 flex h-full w-full items-center justify-center p-5 md:p-9">
                 <img
                   src={previewImage}
                   alt="Preview"

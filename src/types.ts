@@ -1,11 +1,18 @@
 import coverIntelliframeGif from './assets/cover-intelliframe.gif';
-import coverThumbnailIntelliframe from './assets/cover-thumbnail-intelliframe.png';
-import coverTranscriptProject from './assets/cover-transcriptProject.png';
 import coverVideoGenwayGif from './assets/cover-video-genway.gif';
+import frame12 from './assets/Frame 12.png';
+import genwayBackcover from './assets/genway-backcover.png';
 import genwayConference from './assets/genway-conference.jpg';
 import genwayFunnel from './assets/genway-funnel.svg';
+import genwayGptFramer from './assets/genway-gpt-framer.png';
+import genwayLobby02 from './assets/genway-lobby-2.png';
+import image19 from './assets/image 19.png';
 import logoGenway from './assets/logo-genway.svg';
 import logoMicrosoft from './assets/logo-microsoft.png';
+import slide17 from './assets/Slide17.png';
+import slide6 from './assets/Slide6.png';
+import slide7 from './assets/Slide7.png';
+import slide9 from './assets/Slide9.png';
 
 export interface CaseStudySection {
   id: string;
@@ -78,34 +85,26 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         id: 'action-b',
         title: 'Funnel Strategy',
-        subtitle: 'Quick Wins Upstream',
-        description: 'We prioritized faster changes that could lift project creation quickly, rather than waiting for a larger end-to-end publishing redesign. The goal was to influence the funnel sooner and validate whether upstream improvements would cascade forward.',
-        image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1600&h=900',
+        subtitle: 'Landing Page And GPT First Value',
+        description: 'A core part of the funnel strategy was improving the landing page and shifting onboarding from setup first to value first. Instead of asking users to configure a project before they understood the product, Genway GPT let them express a research goal immediately and get value before setup.',
+        image: genwayGptFramer,
         icon: 'Zap',
       },
       {
         id: 'action-c',
         title: 'Move Fast',
-        subtitle: 'Transparency',
-        description: 'Redesigned the interview ‘lobby’ to explain the AI process and data usage. Improved stakeholder reports to build trust in AI-generated insights.',
-        image: coverTranscriptProject,
+        subtitle: 'Lobby Screen For Participants',
+        description: 'Section 6 focused on the lobby screen and onboarding for participating users who were about to be interviewed. I improved the pre-interview experience so participants had more context, lower friction, and a clearer sense of what would happen before joining the interview itself.',
+        image: genwayLobby02,
         icon: 'ShieldCheck',
       },
       {
         id: 'impact',
-        title: 'Designing Trust',
-        subtitle: 'A Better Funnel',
-        description: 'By focusing first on project creation, we created a clearer path toward the metric the team cared about most: publishing. The work also aligned the team around a more practical funnel strategy for driving insight usage and product adoption.',
-        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600&h=900',
-        icon: 'TrendingUp',
-      },
-      {
-        id: 'reflection',
         title: 'Impact',
-        subtitle: 'Fix The Leading Indicator',
-        description: 'When a downstream metric is weak, the right move is not always to optimize that exact moment directly. Sometimes the fastest leverage comes from improving the step right before it and letting the funnel do the rest.',
-        image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1600&h=900',
-        icon: 'Brain',
+        subtitle: 'Visual Identity And Impact',
+        description: 'Together, these onboarding changes created a clearer and more expressive first impression of the product. By combining GPT-first value, a stronger lobby screen, and a sharper visual identity, we improved the path into project creation and supported the broader adoption goals behind the funnel.',
+        image: genwayBackcover,
+        icon: 'TrendingUp',
       },
     ]
   },
@@ -142,7 +141,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         title: 'Key Insight',
         subtitle: 'A Behavioral System, Not A Screen',
         description: 'The key realization was that this was not a UI problem. We were designing how the system behaves across many imperfect scenarios, and users would judge it not only by accuracy, but by whether it felt stable, understandable, and trustworthy.',
-        image: coverThumbnailIntelliframe,
+        image: slide6,
         icon: 'Lightbulb',
       },
       {
@@ -150,7 +149,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         title: 'Reframed The Goal',
         subtitle: 'Human Comprehension',
         description: 'We reframed the product from showing AI detections to helping remote participants understand who is in the room. That shifted the focus from technical output to human comprehension.',
-        image: 'https://images.unsplash.com/photo-1551288049-bbda38a5f9a2?auto=format&fit=crop&q=80&w=1600&h=900',
+        image: image19,
         icon: 'Target',
       },
       {
@@ -158,7 +157,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         title: 'UX System',
         subtitle: 'Rules, Not Just Layouts',
         description: 'Instead of designing one layout, I defined a system of rules for when to switch views, how to handle overlap and movement, how the experience should adapt to different rooms and participant counts, and what should happen when AI confidence was low. We were designing logic, not just visuals.',
-        image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1600&h=900',
+        image: slide9,
         icon: 'Eye',
       },
       {
@@ -166,7 +165,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         title: 'Designed For Variability',
         subtitle: 'Transitions And Trust',
         description: 'A major shift was designing for real-world conditions instead of perfect demos. We focused heavily on transitions, because if the system constantly reframes people or jumps between states, it breaks trust. The goal was to make motion feel smooth, predictable, and non-disruptive even when the AI kept changing underneath.',
-        image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1600&h=900',
+        image: slide7,
         icon: 'Workflow',
       },
       {
@@ -174,7 +173,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         title: 'Impact',
         subtitle: 'Reusable UX Framework',
         description: 'The outcome was not just a feature, but a reusable UX framework: clearer rules for gallery composition and behavior, better collaboration between design, engineering, and AI teams, and a more consistent experience across real-world conditions that supported productization and launch readiness.',
-        image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1600&h=900',
+        image: slide17,
         icon: 'TrendingUp',
       },
       {
@@ -182,7 +181,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         title: 'Reflection',
         subtitle: 'Designing Under Uncertainty',
         description: 'This project shaped how I think about AI design: you are not designing perfect outputs, you are designing how systems behave under uncertainty. Trust does not come from accuracy alone, but from making the system feel stable, predictable, and appropriate.',
-        image: 'https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&q=80&w=1600&h=900',
+        image: frame12,
         icon: 'Brain',
       },
     ]
