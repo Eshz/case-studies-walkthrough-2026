@@ -159,7 +159,7 @@ export default function App() {
       <main className="flex-1 relative flex items-center justify-center overflow-hidden">
         {/* Made for Header */}
         <div className="absolute top-10 right-10 z-40">
-          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400">Made for ARRAKIS</span>
+          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400">Portfolio 2026</span>
         </div>
 
         {/* Background Subtle Texture */}
