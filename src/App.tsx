@@ -157,22 +157,9 @@ export default function App() {
 
       {/* Main Content / Carousel Area */}
       <main className="flex-1 relative flex items-center justify-center overflow-hidden">
-        {/* Made for Brandlight Header */}
-        <div className="absolute top-10 right-10 flex items-center gap-3 z-40">
-          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400">Made for Brandlight</span>
-          <div className="w-10 h-10 bg-[#000830] rounded-xl flex items-center justify-center shadow-sm">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              {/* Recreating the Brandlight logo from the attachment */}
-              <path d="M12 4V9" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M12 15V20" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M4 12H9" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M15 12H20" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M7 7L10 10" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M14 14L17 17" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M17 7L14 10" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M10 14L7 17" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-            </svg>
-          </div>
+        {/* Made for Header */}
+        <div className="absolute top-10 right-10 z-40">
+          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400">Made for ARRAKIS</span>
         </div>
 
         {/* Background Subtle Texture */}
